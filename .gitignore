@@ -1,1 +1,4 @@
 /target
+/dist
+.tags
+.seed_phrase

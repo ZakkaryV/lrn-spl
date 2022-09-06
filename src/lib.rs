@@ -35,7 +35,7 @@ pub fn process_instruction(
 
     let mut greeting_account = GreetingAccount::try_from_slice(&account.data.borrow())?;
     greeting_account.count += 1;
-    greeting_account.serialize(&mut &mut account.data.borrow_mut()[..]);
+    greeting_account.serialize(&mut &mut account.data.borrow_mut()[..])?;
 
     msg!("Account greeted {} times", greeting_account.count);
 
@@ -43,4 +43,6 @@ pub fn process_instruction(
 }
 
 // declare and export the program's entrypoint
-entrypoint!(process_instruction);
+solana_program::entrypoint!(process_instruction);
+
+fn main() -> () {}
